@@ -23,7 +23,7 @@ public class ExpenseController {
     public Expense greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Expense("Kerem", 20, "BLABLA", "Istanbul", new Date());
     }
-    @PostMapping("/Api/Forecast/WeekToWeek")
+    @PostMapping("/api/Expense/Forecast/WeekToWeek")
     @ResponseBody
     public Double forecast(@RequestBody ArrayList<Double> expenses) {
         ForecastManager forecastManager = new ForecastManager(new WeekToWeek(expenses));
