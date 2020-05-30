@@ -14,7 +14,7 @@ import java.util.List;
 * */
 
 
-class DayToWeek implements IForecast {
+public class DayToWeek implements IForecast {
 
     private List<Double> _dayExpenseList;
 

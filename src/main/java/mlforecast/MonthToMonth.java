@@ -61,7 +61,7 @@ public class MonthToMonth implements IForecast{
         TimeSeries series = TimeSeries.from(monthtomonth, monthArray);
 
 
-        ArimaOrder order = ArimaOrder.order(1,0,0,0,0,0);
+        ArimaOrder order = ArimaOrder.order(1,1,1,0,0,0);
 
 
         Arima model = Arima.model(series, order);
