@@ -18,7 +18,7 @@ public class DayToMonth implements IForecast{
 
     private List<Double> _dayExpenseList;
 
-    public DayToMonth(final List<Double> dayExpenseList) {
+    public DayToMonth(List<Double> dayExpenseList) {
 
         _dayExpenseList= dayExpenseList;
     }
@@ -35,7 +35,7 @@ public class DayToMonth implements IForecast{
 
     private List<Double> ForecastDayToMonth(){
 
-        final double [] expenseDay= new double[_dayExpenseList.size()];
+        double [] expenseDay= new double[_dayExpenseList.size()];
 
         for (int i=0; i<_dayExpenseList.size();i++)
         {
@@ -44,16 +44,16 @@ public class DayToMonth implements IForecast{
 
 
 
-        final TimePeriod day = TimePeriod.oneDay();
-        final TimeSeries series = TimeSeries.from(day, expenseDay);
+        TimePeriod day = TimePeriod.oneDay();
+        TimeSeries series = TimeSeries.from(day, expenseDay);
 
         //90 günlük veri 30 günlük günlük tahmin (Pazartesi-Salı...)
         //Hocanın verdiği sezonsallık parametreleri :
-        final ArimaOrder order = ArimaOrder.order(1,0,1,1,1,0);
+        ArimaOrder order = ArimaOrder.order(1,0,1,1,1,0);
 
-        final TimePeriod month = TimePeriod.oneMonth();
-        final Arima model = Arima.model(series, order, month);
-        final Forecast forecast = model.forecast(30);
+        TimePeriod month = TimePeriod.oneMonth();
+        Arima model = Arima.model(series, order, month);
+        Forecast forecast = model.forecast(30);
 
         return forecast.pointEstimates().asList();
 
